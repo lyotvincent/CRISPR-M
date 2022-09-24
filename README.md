@@ -1,7 +1,7 @@
 # CRISPR-M
 CRISPR-M is a novel multi-view deep learning model with a new feature encoding scheme, regarding sgRNA off-target effect prediction for target sites containing indels and mismatches.
 
-## codes
+## /codes
 Here is the introduction of files in ```/codes```.
 
 |file|content|
@@ -13,7 +13,7 @@ Here is the introduction of files in ```/codes```.
 |```transformer_utils.py```|contains the Transformer classes|
 |other files|used for backing up code and are not actually used|
 
-## datasets
+## /datasets
 The associations between dataset names in github and dataset names in paper.  
 
 |dataset name in github ```/datasets```|dataset name in paper|
@@ -27,7 +27,9 @@ The associations between dataset names in github and dataset names in paper.
 | HEK293T in "epigenetic_data" | HEK293T |
 | K562 in "epigenetic_data" | K562 |
 
-## test
+## /test
+Here are the experiments corresponding to each folder in ```test```.
+
 |folder|usage|
 |----|----|
 | 1indel | Comparisons on Target Sites Containing Both Mismatches and Indels |
@@ -36,3 +38,18 @@ The associations between dataset names in github and dataset names in paper.
 | 4multidataset | Comparisons of Encoding Schemes |
 | 6epigenetic | Comparisons with Epigenetic Features |
 | 7visualization | Visual Analysis of CRISPR-M on the Off-Target Effect Prediction |
+| other folders | discard |
+
+Take folder-2encoding_test as an example, ```encoding_test.py``` in the folder-mine is the main program of the test, and ```test_model.py``` contains the model architecture used for the test. ```fig2.py``` in folder-fig2 is the visualization program that visualizes the results of several experiments
+
+## visualization
+Here are the relations between visualization programs and pictures in experiments.
+
+| visualization program | experiment name | figure name |
+|----|----|----|
+| ```/test/1indel/mean_roc_prc.py``` | Comparisons on Target Sites Containing Both Mismatches and Indels | Fig. 1 |
+| ```/test/2encoding_test/fig2/fig2.py``` | Comparisons on Mismatches-only sgRNA-Target Prediction | Fig. 2 |
+| ```/test/2encoding_test/fig2/fig2.py``` | Comparisons with Complex Off-Target Site Datasets | Fig. 2 |
+| ```/test/2encoding_test/fig2/fig2.py``` | Comparisons of Encoding Schemes | Fig. 3 |
+| ```/test/2encoding_test/fig2/fig2.py``` | Comparisons with Epigenetic Features | Fig. 3 |
+| ```/test/7visualization/visual.py``` | Visual Analysis of CRISPR-M on the Off-Target Effect Prediction | Fig. 4 |
