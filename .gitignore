@@ -1,0 +1,6 @@
+脱靶预测参考
+*__pycache__*
+datasets/*/*.csv*
+datasets/*/*.pkl*
+datasets/*/*.xlsx*
+datasets/*/*.epiotrt*
