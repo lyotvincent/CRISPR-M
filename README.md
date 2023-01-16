@@ -40,7 +40,19 @@ Here are the experiments corresponding to each folder in ```test```.
 | 7visualization | Visual Analysis of CRISPR-M on the Off-Target Effect Prediction |
 | other folders | discard |
 
-Take folder-2encoding_test as an example, ```encoding_test.py``` in the folder-mine is the main program of the test, and ```test_model.py``` contains the model architecture used for the test. ```fig2.py``` in folder-fig2 is the visualization program that visualizes the results of several experiments
+Take folder-2encoding_test as an example, ```encoding_test.py``` in the folder-mine is the main program of the test, one could run ```python encoding_test.py``` for run it. The ```test_model.py``` contains the model architecture used for the test. The model in function 'm81212_n13' of ```test_model.py``` is final model of CRISPR-M. ```fig2.py``` in folder-fig2 is the visualization program that visualizes the results of several experiments
+
+## experiment environment
+#### run model
+- python3.8
+- tensorflow-2.9
+- keras-2.9
+- pandas-1.4
+- numpy-1.22
+- scikit-learn-1.1
+#### visualization
+- matploblib-3.5
+- seaborn-0.11
 
 ## visualization
 Here are the relations between visualization programs and pictures in experiments.
