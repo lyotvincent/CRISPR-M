@@ -161,7 +161,6 @@ if __name__ == "__main__":
     for i in range(4):
         draw_mean_prc(path_list[i], c[i], model_name_list[i])
 
-    plt.plot([0, 1], [1, 0], linestyle='--', lw=1, color='grey', alpha=.8)
     plt.xlim([-0.05, 1.05])
     plt.ylim([-0.05, 1.05])
     plt.ylabel('Precision')
@@ -194,7 +193,6 @@ if __name__ == "__main__":
     for i in range(4):
         draw_mean_prc(path2_list[i], c[i], model_name_list[i])
 
-    plt.plot([0, 1], [1, 0], linestyle='--', lw=1, color='grey', alpha=.8)
     plt.xlim([-0.05, 1.05])
     plt.ylim([-0.05, 1.05])
     plt.ylabel('Precision')
@@ -212,4 +210,5 @@ if __name__ == "__main__":
     plt.title('(f) CIECLE_GUIDE: Performance Evaluation on Several Metrics')
 
     plt.savefig(fname="1indel.svg", format="svg", bbox_inches="tight")
+    plt.savefig(fname="1indel.tif", format="tif", bbox_inches="tight")
     plt.savefig(fname="1indel.png", format="png", bbox_inches="tight")

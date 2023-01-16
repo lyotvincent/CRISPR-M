@@ -58,7 +58,7 @@ def draw_encoding_test():
         plt.text(pos8[i], crispr_m_positional_encoding_with_PAM_data[i], "%.2f"%crispr_m_positional_encoding_with_PAM_data[i], va="bottom", ha="center", rotation=90.)
         plt.text(pos9[i], crispr_m_positional_encoding_data[i], "%.2f"%crispr_m_positional_encoding_data[i], va="bottom", ha="center", rotation=90.)
     plt.legend(loc="best", ncol=2)
-    plt.title('(a) Comparisons of Encoding Schemes')
+    plt.title('(a) Comparisons of Encoding Schemes on AUPRC')
 
 def draw_mismatch_boxplot():
     data = dict()
@@ -166,7 +166,6 @@ if __name__ == "__main__":
     plt.subplot(3, 2, 2)
     for i in range(7):
         draw_mean_prc(PATH+"/3mismatch/"+path_list[i], c[i], model_name_list[i])
-    plt.plot([0, 1], [1, 0], linestyle='--', lw=1, color='grey', alpha=.8)
     plt.xlim([-0.05, 1.05])
     plt.ylim([-0.05, 1.05])
     plt.ylabel('Precision')
@@ -197,7 +196,6 @@ if __name__ == "__main__":
     plt.subplot(3, 2, 6)
     for i in range(4):
         draw_mean_prc(PATH+"/4multidataset/"+path_list[i], c[i], model_name_list[i])
-    plt.plot([0, 1], [1, 0], linestyle='--', lw=1, color='grey', alpha=.8)
     plt.xlim([-0.05, 1.05])
     plt.ylim([-0.05, 1.05])
     plt.ylabel('Precision')
@@ -206,6 +204,7 @@ if __name__ == "__main__":
     plt.legend(loc="best")
 
     plt.savefig(fname="fig2.1.svg", format="svg", bbox_inches="tight")
+    plt.savefig(fname="fig2.1.tif", format="tif", bbox_inches="tight")
     plt.savefig(fname="fig2.1.png", format="png", bbox_inches="tight")
 
     plt.figure(dpi=300, figsize=(8, 8))
@@ -233,7 +232,6 @@ if __name__ == "__main__":
     plt.subplot(2, 2, 4)
     for i in range(3):
         draw_mean_prc(PATH+"/6epigenetic/"+path_list[i], c[i], model_name_list[i])
-    plt.plot([0, 1], [1, 0], linestyle='--', lw=1, color='grey', alpha=.8)
     plt.xlim([-0.05, 1.05])
     plt.ylim([-0.05, 1.05])
     plt.ylabel('Precision')
@@ -242,6 +240,7 @@ if __name__ == "__main__":
     plt.legend(loc="best", prop={"size":6})
 
     plt.savefig(fname="fig2.2.svg", format="svg", bbox_inches="tight")
+    plt.savefig(fname="fig2.2.tif", format="tif", bbox_inches="tight")
     plt.savefig(fname="fig2.2.png", format="png", bbox_inches="tight")
 
     ## sampling test

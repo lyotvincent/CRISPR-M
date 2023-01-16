@@ -377,6 +377,7 @@ if __name__ == "__main__":
     draw_mismatch_num()
     plt.subplots_adjust(hspace=0.6)
     plt.savefig(fname="6visual.svg", format="svg", bbox_inches="tight")
+    plt.savefig(fname="6visual.tif", format="tif", bbox_inches="tight")
     plt.savefig(fname="6visual.png", format="png", bbox_inches="tight")
 
     print(time.time()-time1)
