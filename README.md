@@ -43,7 +43,7 @@ Here are the experiments corresponding to each folder in ```/test```. The ```/te
 Take folder-2encoding_test as an example, ```encoding_test.py``` in the folder-mine is the main program of the test, one could run ```python encoding_test.py``` for run it. The ```test_model.py``` contains the model architecture used for the test. The model in function 'm81212_n13' of ```test_model.py``` is final model of CRISPR-M. ```fig2.py``` in folder-fig2 is the visualization program that visualizes the results of several experiments.
 
 
-Here is an example of running the main program. The program will print the training process and the evaluation results of the model. 
+Here is an output example of running the main program. The program will print the training process and the evaluation results of the model. 
 
 > [INFO] ===== Start Loading dataset CIRCLE =====
 [INFO] use 0-th-grna-fold grna  (GTTGCCCCACAGGGCAGTAANGG) for train  
@@ -112,3 +112,17 @@ Here are the relations between visualization programs and pictures in experiment
 | ```/test/2encoding_test/fig2/fig2.py``` | Comparisons of Encoding Schemes | Fig. 3 |
 | ```/test/2encoding_test/fig2/fig2.py``` | Comparisons with Epigenetic Features | Fig. 3 |
 | ```/test/7visualization/visual.py``` | Visual Analysis of CRISPR-M on the Off-Target Effect Prediction | Fig. 4 |
+
+## CopyRight
+This project is licensed under the terms of the MIT license.  
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software.
+
+## Contact
+If you have any questions, please contact us by  
+Tel: (86) 22-85358850;  
+Fax: (86) 22-85358850;  
+Email: jianliu@nankai.edu.cn
