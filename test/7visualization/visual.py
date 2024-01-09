@@ -305,7 +305,7 @@ def draw_mismatch_num():
     plt.yticks(fontsize=FONTSIZE)
     plt.xlabel("Mismatch number", fontdict={"fontsize":FONTSIZE})
     plt.ylabel("Substitution score", fontdict={"fontsize":FONTSIZE})
-    plt.title("(i) The Substitution Scores Substitution Scores in terms of Number of Nismatches", fontdict={"fontsize":FONTSIZE})
+    plt.title("(i) The Substitution Scores in terms of Number of Nismatches", fontdict={"fontsize":FONTSIZE})
 
 def generate_m_change_matrix():
     n = 10000
@@ -357,7 +357,7 @@ if __name__ == "__main__":
     time1 = time.time()
     # generate_m_change_matrix()
 
-    FONTSIZE = 8
+    FONTSIZE = 10
     plt.figure(dpi=300, figsize=(11, 16))
     plt.rc("font", family="Times New Roman")
     params = {"axes.titlesize": FONTSIZE,
@@ -378,5 +378,6 @@ if __name__ == "__main__":
     plt.savefig(fname="6visual.svg", format="svg", bbox_inches="tight")
     plt.savefig(fname="6visual.tif", format="tif", bbox_inches="tight")
     plt.savefig(fname="6visual.png", format="png", bbox_inches="tight")
+    plt.savefig(fname="6visual.eps", format="eps", bbox_inches="tight")
 
     print(time.time()-time1)

@@ -206,17 +206,18 @@ if __name__ == "__main__":
     plt.savefig(fname="fig2.1.svg", format="svg", bbox_inches="tight")
     plt.savefig(fname="fig2.1.tif", format="tif", bbox_inches="tight")
     plt.savefig(fname="fig2.1.png", format="png", bbox_inches="tight")
+    plt.savefig(fname="fig2.1.eps", format="eps", bbox_inches="tight")
 
-    plt.figure(dpi=300, figsize=(8, 8))
+    plt.figure(dpi=300, figsize=(8, 12))
     ## encoding test
     print("drawing 2encoding")
-    plt.subplot(2, 2, (1,2))
+    plt.subplot(3, 2, (1,2))
     draw_encoding_test()
 
     ## epigenetic test
     print("drawing epigenetic")
-    plt.subplot(2, 2, 3)
-    path_list = ["DeepCRISPR/", "CRISPR-M/without_epigenetic/", "CRISPR-M/with_epigenetic/"]
+    plt.subplot(3, 2, 3)
+    path_list = ["DeepCRISPR/trainK562_valHEK293t/", "CRISPR-M/without_epigenetic_trainK562_valHEK293t/", "CRISPR-M/with_epigenetic_trainK562_valHEK293t/"]
     c = ["#22B14C", "#00A2E8", "#ED1C24"]
     model_name_list = ["DeepCRISPR", "CRISPR-M without epigenetic features", "CRISPR-M with epigenetic features"]
     for i in range(3):
@@ -226,22 +227,47 @@ if __name__ == "__main__":
     plt.ylim([-0.05, 1.05])
     plt.xlabel('False Positive Rate (FPR)')
     plt.ylabel('True Positive Rate (TPR)')
-    plt.title('(b) Comparisons with Epigenetic Features:\nMean Receiver Operating Characteristic Curve')
+    plt.title('(b) Test with Epigenetic Features:ROC (train/val=K562/HEK293t)')
     plt.legend(loc="best", prop={"size":6})
 
-    plt.subplot(2, 2, 4)
+    plt.subplot(3, 2, 4)
     for i in range(3):
         draw_mean_prc(PATH+"/6epigenetic/"+path_list[i], c[i], model_name_list[i])
     plt.xlim([-0.05, 1.05])
     plt.ylim([-0.05, 1.05])
     plt.ylabel('Precision')
     plt.xlabel('Recall')
-    plt.title('(c) Comparisons with Epigenetic Features:\nMean Precision-Recall Curve')
+    plt.title('(c) Test with Epigenetic Features:PRC (train/val=K562/HEK293t)')
+    plt.legend(loc="best", prop={"size":6})
+
+    plt.subplot(3, 2, 5)
+    path_list = ["DeepCRISPR/trainHEK293t_valK562/", "CRISPR-M/without_epigenetic_trainHEK293t_valK562/", "CRISPR-M/with_epigenetic_trainHEK293t_valK562/"]
+    c = ["#22B14C", "#00A2E8", "#ED1C24"]
+    model_name_list = ["DeepCRISPR/", "CRISPR-M without epigenetic features", "CRISPR-M with epigenetic features"]
+    for i in range(3):
+        draw_mean_roc(PATH+"/6epigenetic/"+path_list[i], c[i], model_name_list[i])
+    plt.plot([0, 1], [0, 1], linestyle='--', lw=1, color='grey', alpha=.8)
+    plt.xlim([-0.05, 1.05])
+    plt.ylim([-0.05, 1.05])
+    plt.xlabel('False Positive Rate (FPR)')
+    plt.ylabel('True Positive Rate (TPR)')
+    plt.title('(d) Test with Epigenetic Features:ROC (train/val=HEK293t/K562)')
+    plt.legend(loc="best", prop={"size":6})
+
+    plt.subplot(3, 2, 6)
+    for i in range(3):
+        draw_mean_prc(PATH+"/6epigenetic/"+path_list[i], c[i], model_name_list[i])
+    plt.xlim([-0.05, 1.05])
+    plt.ylim([-0.05, 1.05])
+    plt.ylabel('Precision')
+    plt.xlabel('Recall')
+    plt.title('(e) Test with Epigenetic Features:PRC (train/val=HEK293t/K562)')
     plt.legend(loc="best", prop={"size":6})
 
     plt.savefig(fname="fig2.2.svg", format="svg", bbox_inches="tight")
     plt.savefig(fname="fig2.2.tif", format="tif", bbox_inches="tight")
     plt.savefig(fname="fig2.2.png", format="png", bbox_inches="tight")
+    plt.savefig(fname="fig2.2.eps", format="eps", bbox_inches="tight")
 
     ## sampling test
     # print("drawing sampling")

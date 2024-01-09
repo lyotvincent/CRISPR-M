@@ -1,0 +1,21 @@
+seed=0, average_auroc_by_auc=0.8354788365637615, average_auprc_by_auc=0.31549263036793995
+seed=10, average_auroc_by_auc=0.839608444097159, average_auprc_by_auc=0.3740745878464649
+seed=20, average_auroc_by_auc=0.8522021023588174, average_auprc_by_auc=0.38355483598491064
+seed=30, average_auroc_by_auc=0.8679391352428414, average_auprc_by_auc=0.3852220325160804
+seed=40, average_auroc_by_auc=0.8159270019579261, average_auprc_by_auc=0.4026896528072899
+seed=50, average_auroc_by_auc=0.8703957061285875, average_auprc_by_auc=0.38920067492374516
+seed=60, average_auroc_by_auc=0.8529087516442029, average_auprc_by_auc=0.37565033992352803
+seed=70, average_auroc_by_auc=0.8567327395031317, average_auprc_by_auc=0.40218171431890226
+seed=80, average_auroc_by_auc=0.844617644711082, average_auprc_by_auc=0.37475786726742183
+seed=90, average_auroc_by_auc=0.882421775595485, average_auprc_by_auc=0.4112804934635258
+seed=100, average_auroc_by_auc=0.8615876117715624, average_auprc_by_auc=0.36461005809520913
+seed=110, average_auroc_by_auc=0.8658652945644804, average_auprc_by_auc=0.3473156201231854
+seed=120, average_auroc_by_auc=0.8461211114608564, average_auprc_by_auc=0.3779097514358848
+seed=130, average_auroc_by_auc=0.8565012678650249, average_auprc_by_auc=0.40329839392803185
+seed=140, average_auroc_by_auc=0.8598800711155403, average_auprc_by_auc=0.4241532502428708
+seed=150, average_auroc_by_auc=0.8342946667263729, average_auprc_by_auc=0.3603368687289499
+seed=160, average_auroc_by_auc=0.8550285074265085, average_auprc_by_auc=0.38725636841872296
+seed=170, average_auroc_by_auc=0.8296485805440056, average_auprc_by_auc=0.39219650172134357
+seed=180, average_auroc_by_auc=0.8504572024880881, average_auprc_by_auc=0.38783464661794737
+seed=190, average_auroc_by_auc=0.849683578921324, average_auprc_by_auc=0.41230092633868776
+

@@ -99,7 +99,8 @@ class Trainer:
         # model.summary()
 
         # model = model_4(VOCABULARY_SIZE=50, MAX_STEPS=24, EMBED_SIZE=7)
-        model = m81212_n13_with_epigenetic()
+        model = m81212_n13()
+        # model = m81212_n13_with_epigenetic()
         # model = model_for_transformer_using_seperate_onofftarget()
 
         model.compile(optimizer=Adam(), loss=BinaryCrossentropy(), metrics=['acc', AUC(num_thresholds=4000, curve="ROC", name="auroc"), AUC(num_thresholds=4000, curve="PR", name="auprc")])
@@ -126,24 +127,25 @@ class Trainer:
         history = model.fit(
             # x=self.train_features, y=self.train_labels,
             # x={"input_1": self.train_feature_ont, "input_2": self.train_feature_offt}, y={"output": self.train_labels},
-            # x={"input_1": self.train_features, "input_2": self.train_feature_ont, "input_3": self.train_feature_offt}, y={"output": self.train_labels},
-            x={"input_1": self.train_features, "input_2": self.train_feature_ont, "input_3": self.train_feature_offt, "input_4": self.train_on_epigenetic_code, "input_5": self.train_off_epigenetic_code}, y={"output": self.train_labels},
+            x={"input_1": self.train_features, "input_2": self.train_feature_ont, "input_3": self.train_feature_offt}, y={"output": self.train_labels},
+            # x={"input_1": self.train_features, "input_2": self.train_feature_ont, "input_3": self.train_feature_offt, "input_4": self.train_on_epigenetic_code, "input_5": self.train_off_epigenetic_code}, y={"output": self.train_labels},
             batch_size=self.BATCH_SIZE,
             epochs=self.N_EPOCHS,
             # validation_data=(self.validation_features, self.validation_labels),
             # validation_data=({"input_1": self.validation_feature_ont, "input_2": self.validation_feature_offt}, {"output": self.validation_labels}),
-            # validation_data=({"input_1": self.validation_features, "input_2": self.validation_feature_ont, "input_3": self.validation_feature_offt}, {"output": self.validation_labels}),
-            validation_data=({"input_1": self.validation_features, "input_2": self.validation_feature_ont, "input_3": self.validation_feature_offt, "input_4": self.validation_on_epigenetic_code, "input_5": self.validation_off_epigenetic_code}, {"output": self.validation_labels}),
+            validation_data=({"input_1": self.validation_features, "input_2": self.validation_feature_ont, "input_3": self.validation_feature_offt}, {"output": self.validation_labels}),
+            # validation_data=({"input_1": self.validation_features, "input_2": self.validation_feature_ont, "input_3": self.validation_feature_offt, "input_4": self.validation_on_epigenetic_code, "input_5": self.validation_off_epigenetic_code}, {"output": self.validation_labels}),
             callbacks=callbacks
         )
         print("[INFO] ===== End train =====")
 
         model = load_model('tcrispr_model.h5', custom_objects={"PositionalEncoding": PositionalEncoding})
         # test_loss, test_acc, auroc, auprc = model.evaluate(self.validation_features, self.validation_labels)
-        # test_loss, test_acc, auroc, auprc = model.evaluate(x={"input_1": self.validation_features, "input_2": self.validation_feature_ont, "input_3": self.validation_feature_offt}, y=self.validation_labels)
-        test_loss, test_acc, auroc, auprc = model.evaluate(x={"input_1": self.validation_features, "input_2": self.validation_feature_ont, "input_3": self.validation_feature_offt, "input_4": self.validation_on_epigenetic_code, "input_5": self.validation_off_epigenetic_code}, y=self.validation_labels)
+        test_loss, test_acc, auroc, auprc = model.evaluate(x={"input_1": self.validation_features, "input_2": self.validation_feature_ont, "input_3": self.validation_feature_offt}, y=self.validation_labels)
+        # test_loss, test_acc, auroc, auprc = model.evaluate(x={"input_1": self.validation_features, "input_2": self.validation_feature_ont, "input_3": self.validation_feature_offt, "input_4": self.validation_on_epigenetic_code, "input_5": self.validation_off_epigenetic_code}, y=self.validation_labels)
         # accuracy, precision, recall, f1, fbeta, auroc_skl, auprc_skl, auroc_by_auc, auprc_by_auc, spearman_corr_by_pred_score, spearman_corr_by_pred_labels = compute_auroc_and_auprc(model=model, out_dim=1, test_features=self.validation_features, test_labels=self.validation_labels)
-        accuracy, precision, recall, f1, fbeta, auroc_skl, auprc_skl, auroc_by_auc, auprc_by_auc, spearman_corr_by_pred_score, spearman_corr_by_pred_labels, fpr, tpr, precision_point, recall_point = compute_auroc_and_auprc(model=model, out_dim=1, test_features=[self.validation_features, self.validation_feature_ont, self.validation_feature_offt, self.validation_on_epigenetic_code, self.validation_off_epigenetic_code], test_labels=self.validation_labels)
+        accuracy, precision, recall, f1, fbeta, auroc_skl, auprc_skl, auroc_by_auc, auprc_by_auc, spearman_corr_by_pred_score, spearman_corr_by_pred_labels, fpr, tpr, precision_point, recall_point = compute_auroc_and_auprc(model=model, out_dim=1, test_features=[self.validation_features, self.validation_feature_ont, self.validation_feature_offt], test_labels=self.validation_labels)
+        # accuracy, precision, recall, f1, fbeta, auroc_skl, auprc_skl, auroc_by_auc, auprc_by_auc, spearman_corr_by_pred_score, spearman_corr_by_pred_labels, fpr, tpr, precision_point, recall_point = compute_auroc_and_auprc(model=model, out_dim=1, test_features=[self.validation_features, self.validation_feature_ont, self.validation_feature_offt, self.validation_on_epigenetic_code, self.validation_off_epigenetic_code], test_labels=self.validation_labels)
         return test_loss, test_acc, auroc, auprc, accuracy, precision, recall, f1, fbeta, auroc_skl, auprc_skl, auroc_by_auc, auprc_by_auc, spearman_corr_by_pred_score, spearman_corr_by_pred_labels, fpr, tpr, precision_point, recall_point
 
 if __name__ == "__main__":
@@ -152,6 +154,9 @@ if __name__ == "__main__":
     trainer = Trainer()
     trainer.train_features, trainer.train_feature_ont, trainer.train_feature_offt, trainer.train_labels, trainer.train_on_epigenetic_code, trainer.train_off_epigenetic_code = load_K562_encoded_by_both_base_and_base_pair()
     trainer.validation_features, trainer.validation_feature_ont, trainer.validation_feature_offt, trainer.validation_labels, trainer.validation_on_epigenetic_code, trainer.validation_off_epigenetic_code = load_HEK293t_encoded_by_both_base_and_base_pair()
+
+    # Exchange training and validation sets
+    trainer.train_features, trainer.train_feature_ont, trainer.train_feature_offt, trainer.train_labels, trainer.train_on_epigenetic_code, trainer.train_off_epigenetic_code, trainer.validation_features, trainer.validation_feature_ont, trainer.validation_feature_offt, trainer.validation_labels, trainer.validation_on_epigenetic_code, trainer.validation_off_epigenetic_code = trainer.validation_features, trainer.validation_feature_ont, trainer.validation_feature_offt, trainer.validation_labels, trainer.validation_on_epigenetic_code, trainer.validation_off_epigenetic_code, trainer.train_features, trainer.train_feature_ont, trainer.train_feature_offt, trainer.train_labels, trainer.train_on_epigenetic_code, trainer.train_off_epigenetic_code
 
     test_loss_sum, test_acc_sum, auroc_sum, auprc_sum, accuracy_sum, precision_sum, recall_sum, f1_sum, fbeta_sum, auroc_skl_sum, auprc_skl_sum, auroc_by_auc_sum, auprc_by_auc_sum, spearman_corr_by_pred_score_sum, spearman_corr_by_pred_labels_sum = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     fpr_list, tpr_list, precision_point_list, recall_point_list = list(), list(), list(), list()

@@ -131,8 +131,8 @@ if __name__ == "__main__":
     path2_list = ["./CRISPR-Net/2CIRCLE_GUIDE/", "./R-CRISPR/2CIRCLE_GUIDE/", "./CRISPR-IP/2CIRCLE_GUIDE/", "./CRISPR-M/m81212_n13/2CIRCLE_GUIDE/"]
     model_name_list = ["CRISPR-Net", "R-CRISPR", "CRISPR-IP", "CRISPR-M"]
     c = ["#FFC90E", "#22B14C", "#00A2E8", "#ED1C24", "#FFAEC9"]
-    FONTSIZE = 8
-    plt.figure(dpi=300, figsize=(9, 16))
+    FONTSIZE = 10
+    plt.figure(dpi=300, figsize=(9, 17))
     # plt.style.use("fast")
     plt.rc("font", family="Times New Roman")
     params = {"axes.titlesize": FONTSIZE,
@@ -212,3 +212,4 @@ if __name__ == "__main__":
     plt.savefig(fname="1indel.svg", format="svg", bbox_inches="tight")
     plt.savefig(fname="1indel.tif", format="tif", bbox_inches="tight")
     plt.savefig(fname="1indel.png", format="png", bbox_inches="tight")
+    plt.savefig(fname="1indel.eps", format="eps", bbox_inches="tight")

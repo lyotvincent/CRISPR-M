@@ -4,3 +4,4 @@ datasets/*/*.csv*
 datasets/*/*.pkl*
 datasets/*/*.xlsx*
 datasets/*/*.epiotrt*
+test/10ablation/tcrispr_model.h5

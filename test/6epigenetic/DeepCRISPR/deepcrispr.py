@@ -99,12 +99,14 @@ def Net_training(xtrain_on, xtrain_off, y_train, X_val_on, X_val_off, y_val):
 
 if __name__ == "__main__":
     time1 = time.time()
-    e = Epiotrt(fpath="../../../datasets/epigenetic_data/k562.epiotrt", num_epi_features=4)
+    # e = Epiotrt(fpath="../../../datasets/epigenetic_data/k562.epiotrt", num_epi_features=4)
+    e = Epiotrt(fpath="../../../datasets/epigenetic_data/hek293t.epiotrt", num_epi_features=4)
     (xtrain_on, xtrain_off), ytrain = e.get_dataset()
     xtrain_on = np.transpose(xtrain_on, (0, 2, 1))
     xtrain_off = np.transpose(xtrain_off, (0, 2, 1))
     print(xtrain_on.shape, xtrain_off.shape, ytrain.shape)
-    e = Epiotrt(fpath="../../../datasets/epigenetic_data/hek293t.epiotrt", num_epi_features=4)
+    # e = Epiotrt(fpath="../../../datasets/epigenetic_data/hek293t.epiotrt", num_epi_features=4)
+    e = Epiotrt(fpath="../../../datasets/epigenetic_data/k562.epiotrt", num_epi_features=4)
     (xtest_on, xtest_off), ytest = e.get_dataset()
     xtest_on = np.transpose(xtest_on, (0, 2, 1))
     xtest_off = np.transpose(xtest_off, (0, 2, 1))
