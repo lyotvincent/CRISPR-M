@@ -15,7 +15,7 @@ from positional_encoding import PositionalEncoding
 from encoding import encode_in_6_dimensions, encode_by_base_pair_vocabulary, encode_by_one_hot, encode_by_crispr_net_method, encode_by_crispr_net_method_with_isPAM, encode_by_crispr_ip_method, encode_by_crispr_ip_method_without_minus, encode_by_crispr_ip_method_without_isPAM
 from metrics_utils import compute_auroc_and_auprc
 from data_preprocessing_utils import load_CIRCLE_dataset, load_I_2_dataset, load_CIRCLE_dataset_encoded_by_base_vocabulary, load_CIRCLE_dataset_encoded_by_both_base_and_base_pair, load_I_2_dataset_encoded_by_both_base_and_base_pair
-from test_model import m81212_n13
+from test_model import m81212_n13, m81212_n13_without_LSTM, m81212_n13_without_CNN, m81212_n13_without_Dense, m81212_n13_without_branch34, m81212_n13_without_branch12
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0, 1"
 
@@ -93,7 +93,7 @@ class Trainer:
         # model.summary()
 
         # model = model_4(VOCABULARY_SIZE=50, MAX_STEPS=24, EMBED_SIZE=7)
-        model = m81212_n13()
+        model = m81212_n13_without_branch12()
         # model = model_for_transformer_using_seperate_onofftarget()
 
         model.compile(optimizer=Adam(), loss=BinaryCrossentropy(), metrics=['acc', AUC(num_thresholds=4000, curve="ROC", name="auroc"), AUC(num_thresholds=4000, curve="PR", name="auprc")])
@@ -235,3 +235,14 @@ if __name__ == "__main__":
     # print("average_test_loss=%s, average_test_acc=%s, average_auroc=%s, average_auprc=%s, average_accuracy=%s, average_precision=%s, average_recall=%s, average_f1=%s, average_fbeta=%s, average_auroc_skl=%s, average_auprc_skl=%s, average_auroc_by_auc=%s, average_auprc_by_auc=%s, average_spearman_corr_by_pred_score=%s, average_spearman_corr_by_pred_labels=%s" % (test_loss_sum/10, test_acc_sum/10, auroc_sum/10, auprc_sum/10, accuracy_sum/10, precision_sum/10, recall_sum/10, f1_sum/10, fbeta_sum/10, auroc_skl_sum/10, auprc_skl_sum/10, auroc_by_auc_sum/10, auprc_by_auc_sum/10, spearman_corr_by_pred_score_sum/10, spearman_corr_by_pred_labels_sum/10))
 
     print(time.time()-time1)
+
+# full model
+# average_test_loss=0.049477925151586534, average_test_acc=0.984140419960022, average_auroc=0.9561350524425507, average_auprc=0.47954664528369906, average_accuracy=0.9841404201938635, average_precision=0.6176627326791613, average_recall=0.36222877068696563, average_f1=0.33447323919626976, average_fbeta=0.3196151680697139, average_auroc_skl=0.9656437540450554, average_auprc_skl=0.4818726096600557, average_auroc_by_auc=0.9656437540450554, average_auprc_by_auc=0.4806843323117217, average_spearman_corr_by_pred_score=0.16942138563134332, average_spearman_corr_by_pred_labels=0.3937708740207263
+# without LSTM
+# average_test_loss=0.04075909424573183, average_test_acc=0.9889172077178955, average_auroc=0.954012793302536, average_auprc=0.4624213516712189, average_accuracy=0.9889172112323326, average_precision=0.7221839594413597, average_recall=0.22459319034938535, average_f1=0.30175325109552703, average_fbeta=0.24808210529463767, average_auroc_skl=0.9641135365920993, average_auprc_skl=0.46505858081512635, average_auroc_by_auc=0.9641135365920993, average_auprc_by_auc=0.46384576552648965, average_spearman_corr_by_pred_score=0.16899607628476415, average_spearman_corr_by_pred_labels=0.3589541620258636
+# without CNN
+# average_test_loss=0.04292326923459768, average_test_acc=0.9879270374774933, average_auroc=0.9589716911315918, average_auprc=0.4725921839475632, average_accuracy=0.9879270393887039, average_precision=0.6776346179873259, average_recall=0.2952065870232131, average_f1=0.34188752774119335, average_fbeta=0.29946175259384256, average_auroc_skl=0.9666341409491892, average_auprc_skl=0.47435380193364046, average_auroc_by_auc=0.9666341409491892, average_auprc_by_auc=0.4731539962768996, average_spearman_corr_by_pred_score=0.16966224462272145, average_spearman_corr_by_pred_labels=0.39733892872269466
+# without Dense
+# average_test_loss=0.2503120359033346, average_test_acc=0.8716904491186142, average_auroc=0.9623424649238587, average_auprc=0.44902277588844297, average_accuracy=0.8716904497402705, average_precision=0.2944550997768752, average_recall=0.7069156758713284, average_f1=0.250958972674826, average_fbeta=0.33725457894529526, average_auroc_skl=0.9627150728748759, average_auprc_skl=0.45118530651315725, average_auroc_by_auc=0.9627150728748759, average_auprc_by_auc=0.44946432283193516, average_spearman_corr_by_pred_score=0.16801453928907667, average_spearman_corr_by_pred_labels=0.30869861766477596
+# m81212_n13_without_branch34
+# average_test_loss=0.0663413705304265, average_test_acc=0.9798489093780518, average_auroc=0.9333803594112396, average_auprc=0.4547324895858765, average_accuracy=0.9798489108376813, average_precision=0.6515391492823905, average_recall=0.2890780854967269, average_f1=0.21141990751631412, average_fbeta=0.21846547629109186, average_auroc_skl=0.9613023209265824, average_auprc_skl=0.4598840303767801, average_auroc_by_auc=0.9613023209265824, average_auprc_by_auc=0.45861181267616374, average_spearman_corr_by_pred_score=0.16809461516271043, average_spearman_corr_by_pred_labels=0.28757265641869767

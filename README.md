@@ -113,7 +113,7 @@ Here are the relations between visualization programs and pictures in experiment
 | ```/test/2encoding_test/fig2/fig2.py``` | Comparisons with Epigenetic Features | Fig. 3 |
 | ```/test/7visualization/visual.py``` | Visual Analysis of CRISPR-M on the Off-Target Effect Prediction | Fig. 4 |
 
-## CopyRight
+## Copyright
 This project is licensed under the terms of the MIT license.  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
