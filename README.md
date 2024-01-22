@@ -38,6 +38,8 @@ Here are the experiments corresponding to each folder in ```/test```. The ```/te
 | 4multidataset | Comparisons with Complex Off-Target Site Datasets | \4multidataset\CRISPR-M\encoding_test.py |
 | 6epigenetic | Comparisons with Epigenetic Features | \6epigenetic\CRISPR-M\encoding_test.py |
 | 7visualization | Visual Analysis of CRISPR-M on the Off-Target Effect Prediction | \7visualization\encoding_test.py |
+| 9random_seed_test | Impact of random seed on AUPRC results | \9random_seed_test\CRISPR_M_mismatch_test.py et al. |
+| 10ablation | Ablation experiments | \10ablation\ablation_test.py |
 | other folders | discard |
 
 Take folder-2encoding_test as an example, ```encoding_test.py``` in the folder-mine is the main program of the test, one could run ```python encoding_test.py``` for run it. The ```test_model.py``` contains the model architecture used for the test. The model in function 'm81212_n13' of ```test_model.py``` is final model of CRISPR-M. ```fig2.py``` in folder-fig2 is the visualization program that visualizes the results of several experiments.
@@ -111,7 +113,8 @@ Here are the relations between visualization programs and pictures in experiment
 | ```/test/2encoding_test/fig2/fig2.py``` | Comparisons with Complex Off-Target Site Datasets | Fig. 2 |
 | ```/test/2encoding_test/fig2/fig2.py``` | Comparisons of Encoding Schemes | Fig. 3 |
 | ```/test/2encoding_test/fig2/fig2.py``` | Comparisons with Epigenetic Features | Fig. 3 |
-| ```/test/7visualization/visual.py``` | Visual Analysis of CRISPR-M on the Off-Target Effect Prediction | Fig. 4 |
+| ```/test/7visualization/visual.py``` | Impact of random seed on AUPRC results, and results of ablation experiments. | Fig. 5 |
+| ```/test/9random_seed_test/draw_random_seed_LOGOCV.py``` | Visual Analysis of CRISPR-M on the Off-Target Effect Prediction | Fig. 4 |
 
 ## Copyright
 This project is licensed under the terms of the MIT license.  
